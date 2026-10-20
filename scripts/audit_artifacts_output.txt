@@ -1,0 +1,18 @@
+### MODEL ARTIFACT ###
+- ndarray (module=numpy)
+
+### THRESHOLD ARTIFACT ###
+type=<class 'numpy.float64'> repr=np.float64(0.7158444761787314)
+valid range check: 0 <= 0.7158444761787314 <= 1 -> True
+
+### PIPELINE feature names out ###
+not available: AttributeError: 'numpy.ndarray' object has no attribute 'get_feature_names_out'
+
+### SMOKE INFERENCE (replicating main.py) ###
+INFERENCE FAILED: AttributeError: 'numpy.ndarray' object has no attribute 'predict_proba'
+
+### UNKNOWN CATEGORY TEST ###
+unknown categories REJECTED: AttributeError: 'numpy.ndarray' object has no attribute 'predict_proba'
+
+### NaN NUMERIC TEST ###
+NaN loan_int_rate REJECTED: AttributeError: 'numpy.ndarray' object has no attribute 'predict_proba'
