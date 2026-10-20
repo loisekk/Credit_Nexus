@@ -1,0 +1,111 @@
+{
+  "artifact_kind": "rebuilt-estimator",
+  "rebuilt_at_utc": "2026-10-20T09:43:19.186777+00:00",
+  "reason": "Uploaded credit_risk_model.pkl contains a numpy array of 6305 test-set probabilities (notebook cell 81 reassigned `calibrated_model` to `calibrated_model_xg.predict_proba(X_test)[:,1]` before cell 82 dumped it). This artifact is a faithful re-execution of the notebook's intended pipeline.",
+  "intended_model": "CalibratedClassifierCV(Pipeline(ColumnTransformer(median-impute + OneHot) -> XGBClassifier(learning_rate=0.1, scale_pos_weight=3.6312, random_state=42)), method='sigmoid', cv=5)",
+  "notebook": "Credit_Card_Risk.ipynb (cells 13,15,17,20,22-25,40,60)",
+  "dataset": {
+    "source": "Kaggle laotse/credit-risk-dataset (CC0 Public Domain)",
+    "file": "credit_risk_dataset.csv",
+    "sha256": "ce3c6d2167717bf1627d1c0c81cbccd28323cd4aa7b96d542599366d5ff6aac8",
+    "rows": 32581,
+    "verification_checks_passed": "31/31"
+  },
+  "verification_vs_uploaded_array": {
+    "max_abs_diff": 2.602358320080711e-05,
+    "mean_abs_diff": 4.092652925341703e-06,
+    "p50_abs_diff": 7.628837324982762e-07,
+    "p95_abs_diff": 1.7910958149069942e-05,
+    "pearson_correlation": 0.9999999999058972,
+    "same_side_of_0.5": 1.0
+  },
+  "threshold": {
+    "value": 0.7158444761787314,
+    "source": "uploaded best_threshold.pkl (verbatim, unmodified)",
+    "re_derived_value": 0.7158693009262009
+  },
+  "holdout_metrics_measured": {
+    "evaluated_on": "holdout test set (n=6305, never used for training)",
+    "threshold_used": 0.7158444761787314,
+    "accuracy": 0.9383029341792228,
+    "precision": 0.9783677482792527,
+    "recall": 0.7305433186490455,
+    "f1": 0.8364859184531316,
+    "roc_auc": 0.948572017623522,
+    "average_precision": 0.9019233946389741,
+    "brier_score": 0.054579009311699817,
+    "confusion_matrix": {
+      "true_negative": 4921,
+      "false_positive": 22,
+      "false_negative": 367,
+      "true_positive": 995
+    }
+  },
+  "notebook_reported_metrics": {
+    "cv_xgboost": {
+      "roc_auc": 0.9465,
+      "accuracy": 0.9218,
+      "precision": 0.8361,
+      "recall": 0.7936,
+      "f1": 0.8142
+    },
+    "holdout_uncalibrated_xgboost": {
+      "accuracy": 0.92,
+      "precision": 0.82,
+      "recall": 0.79,
+      "f1": 0.81
+    },
+    "baseline_logistic_regression": {
+      "accuracy": 0.82,
+      "precision": 0.56,
+      "recall": 0.79,
+      "f1": 0.65
+    },
+    "random_forest": {
+      "accuracy": 0.94,
+      "precision": 0.98,
+      "recall": 0.72,
+      "f1": 0.83
+    },
+    "note": "Values as printed by the development notebook outputs; distinct from the measured holdout metrics above."
+  },
+  "shap_compatible": true,
+  "learned_categories": {
+    "person_home_ownership": [
+      "MORTGAGE",
+      "OTHER",
+      "OWN",
+      "RENT"
+    ],
+    "loan_intent": [
+      "DEBTCONSOLIDATION",
+      "EDUCATION",
+      "HOMEIMPROVEMENT",
+      "MEDICAL",
+      "PERSONAL",
+      "VENTURE"
+    ],
+    "loan_grade": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "cb_person_default_on_file": [
+      "N",
+      "Y"
+    ]
+  },
+  "auxiliary_explainer_artifact": "xg_model_aux_explainer.pkl (uncalibrated pipeline; SHAP-only, not used for serving)",
+  "environment": {
+    "python": "3.12.15",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "pandas": "2.2.3",
+    "numpy": "2.1.3",
+    "joblib": "1.5.3"
+  }
+}
