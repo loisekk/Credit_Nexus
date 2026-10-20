@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* CREDITNEXUS design tokens */
+  --color-nexus-void: #04070E;
+  --color-nexus-deep: #070C17;
+  --color-nexus-panel: #0C1322;
+  --color-nexus-raised: #111A2C;
+  --color-nexus-overlay: #16203380;
+  --color-nexus-line: #94A3B824;
+  --color-nexus-line-strong: #94A3B83D;
+  --color-nexus-text: #E6EDF7;
+  --color-nexus-dim: #8FA0B8;
+  --color-nexus-faint: #5C6D87;
+  --color-nexus-cyan: #22D3EE;
+  --color-nexus-cyan-soft: #67E8F9;
+  --color-nexus-blue: #38BDF8;
+  --color-nexus-violet: #8B5CF6;
+  --color-nexus-amber: #F5A623;
+  --color-nexus-red: #F87171;
+  --color-nexus-emerald: #34D399;
+}
+
+/* CREDITNEXUS is a dark-first product: root palette IS the dark palette. */
+:root {
+  --radius: 0.875rem;
+  --background: #04070E;
+  --foreground: #E6EDF7;
+  --card: #0C1322;
+  --card-foreground: #E6EDF7;
+  --popover: #0E1626;
+  --popover-foreground: #E6EDF7;
+  --primary: #22D3EE;
+  --primary-foreground: #04070E;
+  --secondary: #111A2C;
+  --secondary-foreground: #C7D3E4;
+  --muted: #101827;
+  --muted-foreground: #8FA0B8;
+  --accent: #152034;
+  --accent-foreground: #DCE7F5;
+  --destructive: #F87171;
+  --border: #94A3B824;
+  --input: #94A3B833;
+  --ring: #22D3EE99;
+  --chart-1: #22D3EE;
+  --chart-2: #8B5CF6;
+  --chart-3: #34D399;
+  --chart-4: #F5A623;
+  --chart-5: #F87171;
+  --sidebar: #0C1322;
+  --sidebar-foreground: #E6EDF7;
+  --sidebar-primary: #22D3EE;
+  --sidebar-primary-foreground: #04070E;
+  --sidebar-accent: #152034;
+  --sidebar-accent-foreground: #DCE7F5;
+  --sidebar-border: #94A3B824;
+  --sidebar-ring: #22D3EE99;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  ::selection {
+    background: #22D3EE33;
+    color: #E6EDF7;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism panel — restrained */
+  .nexus-glass {
+    background: linear-gradient(180deg, #0D1524E6 0%, #0A101CC9 100%);
+    border: 1px solid #94A3B824;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .nexus-panel {
+    background: #0C1322;
+    border: 1px solid #94A3B824;
+  }
+  .nexus-glow-cyan {
+    box-shadow: 0 0 0 1px #22D3EE26, 0 8px 32px -12px #22D3EE33;
+  }
+  .nexus-glow-violet {
+    box-shadow: 0 0 0 1px #8B5CF626, 0 8px 32px -12px #8B5CF633;
+  }
+  .nexus-grid-bg {
+    background-image:
+      linear-gradient(#94A3B80D 1px, transparent 1px),
+      linear-gradient(90deg, #94A3B80D 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .nexus-radial-fade {
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #15243E66 0%, transparent 70%);
+  }
+  /* Slim custom scrollbars for long lists/panels */
+  .nexus-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #263349 transparent;
+  }
+  .nexus-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .nexus-scroll::-webkit-scrollbar-thumb {
+    background: #263349;
+    border-radius: 999px;
+  }
+  .nexus-scroll::-webkit-scrollbar-thumb:hover {
+    background: #33445F;
+  }
+  .nexus-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Reduced motion: hard stop for decorative animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
